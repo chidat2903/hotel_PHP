@@ -1,0 +1,110 @@
+<?php
+require_once('../model/connect.php');
+$render = "";
+if (isset($_POST['name-product'])) {
+    $query = "SELECT * from products where name like '%" . $_POST['name-product'] . "%'";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result)) {
+        while ($table = mysqli_fetch_array($result)) {
+            $render .= '
+            <div class="card" style="width: 18rem; margin-bottom:20px;">
+            <img src="' . $table['image'] . '" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">' . $table['name'] . '</h5>
+                <p class="card-text">' . $table["price"] . '</p>
+                <a href="Product-details.php?id=' . $table['id'] . '" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+            ';
+        }
+    }
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/search.css">
+</head>
+
+<body>
+<?php include ('../admin/header.php') ?>
+
+    <div class="slider">
+        <div class="contents">
+            <div class="title">
+                <h2>Tìm kiếm sản phẩm</h2>
+            </div>
+            <div class="search-bar">
+                <tr>
+                    <td class="tdLabel"><label for="register_country" class="label">Danh mục: </label></td>
+                    <td>
+                        <select name="country" id="register_country" style="width:160px">
+                            <option value="india">india</option>
+                            <option value="pakistan">pakistan</option>
+                            <option value="africa">africa</option>
+                            <option value="china">china</option>
+                            <option value="other">other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdLabel"><label for="register_country" class="label">Thể loại: </label></td>
+                    <td>
+                        <select name="country" id="register_country" style="width:160px">
+                            <option value="india">Tất cả</option>
+                            <option value="pakistan">pakistan</option>
+                            <option value="africa">africa</option>
+                            <option value="china">china</option>
+                            <option value="other">other</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="tdLabel"><label for="register_country" class="label">Mức giá: </label></td>
+                    <td>
+                        <select name="country" id="register_country" style="width:160px">
+                            <option value="india">Tất cả</option>
+                            <option value="pakistan">pakistan</option>
+                            <option value="africa">africa</option>
+                            <option value="china">china</option>
+                            <option value="other">other</option>
+                        </select>
+                    </td>
+                <tr>
+                    <td class="tdLabel"><label for="register_country" class="label">Sắp Xếp: </label></td>
+                    <td>
+                        <select name="country" id="register_country" style="width:160px">
+                            <option value="india">india</option>
+                            <option value="pakistan">pakistan</option>
+                            <option value="africa">africa</option>
+                            <option value="china">china</option>
+                            <option value="other">other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <input type="submit" value="Lọc">
+                </tr>
+                </tr>
+            </div>
+            <div class="cards" style="width: 18rem; margin-bottom:20px;">
+                <?php echo $render; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php include ('../admin/footer.php') ?>
+</body>
+
+</html>

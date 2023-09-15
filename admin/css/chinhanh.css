@@ -1,0 +1,107 @@
+header{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8F8FF;
+    box-sizing: border-box;
+}
+
+header img{
+    height: 60px;
+    width: 100px;
+}
+
+.header1{
+    display: flex;
+    width: 250px;
+    height: 23px;
+    align-items: center;
+    gap: 9px;
+    margin-right: 117px;
+}
+.header1 p{
+    padding-top: 15px;
+    font-size: 20px;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.header2{
+    display: flex;
+    align-items: center;
+}
+.header2 .language{
+    padding-top: 4px;
+    background-color: #F8F8FF;
+    border: none;
+}
+
+
+.header2 .login{
+    margin-right: 10px;
+    padding-top: 4px;
+    background-color: #F8F8FF;
+    border: none;
+    font-weight: bold;
+}
+.login{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-left: 40px;
+    margin-right: 50px;
+    transition: .5s;
+}
+.login:hover {
+    color: #3a6ad2;
+}
+
+.Location{
+    text-align: center;
+}
+.Location h1{
+    padding-top: 50px;
+    object-fit: cover;
+}
+.diemden{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+.diemden-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.diemden-col img{
+    width: 100%;
+    
+}
+
+.layer{
+    background: rgba(226,0,0,0.7);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+
+
+
