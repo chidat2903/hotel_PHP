@@ -64,8 +64,8 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> Ảnh sản phẩm </th>
-                                        <th> Tên sản phẩm</th>
+                                        <th> Ảnh phòng/ Dịch vụ </th>
+                                        <th> Tên phòng/ Dịch vụ</th>
                                         <th> Số lượng </th>
                                         <th> Giá </th>
                                         <th> Giảm giá </th>
@@ -141,8 +141,8 @@
                                                         <td><?php echo ($totalPriceProduct); ?></td>
 
                                                         <!-- Xóa sản phẩm -->
-                                                        <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href ="delete-cart.php?id=<?php echo $id; ?>">
-                                                                <span class="fa fa-trash fa-lg" aria-hidden="true"></span>
+                                                        <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa phòng này không?')" href ="delete-cart.php?id=<?php echo $id; ?>">
+                                                                <center><span class="fa-solid fa-trash fa-bounce fa-lg"  aria-hidden="true"></span></center>
                                                         </a></td>
                                                     </tr>
                                                 <?php
@@ -161,37 +161,29 @@
                         </div><!-- /content -->
 
                         <div class="calculator">
-                            <div class ="col-md-5 col-sm-6 col-xs-12 update-view ">
-                                <button type="submit" name="update-cart"> Cập nhật giỏ hàng </button>
-                                <button id ="total">
+                            <div class ="col mx-auto">
+                                <button id="total" class="btn btn-warning">
                                     <span style="font-weight: bold;"> Tổng tiền: <?php echo number_format($totalPay); ?>
                                         <sup>đ</sup>
                                     </span>
                                 </button>
+                                <a href="home.php" class="btn btn-outline-warning text-dark fw-bold">Tiếp tục đặt phòng</a>
+                                <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href ="delete-cart.php?idCancel=0" class="btn btn-outline-warning text-dark fw-bold"> Hủy giỏ hàng </a>
                             </div><!-- /col -->
                         </div><!-- /caculate -->
+                        <div class="d-grid gap-2 col-6 mx-auto my-4">
 
-                        <div class ="col-md-7 col-sm-6 col-xs-12 title_right">
-                            <div class ="title_right">
-                                <button>
-                                    <a href="./home.php"> Tiếp tục mua hàng </a>
-                                </button>
-                            </div><!-- /title_right-->
-
-                            <button class="delete">
-                                <a onclick="return confirm('Giỏ hàng sẽ trống! Bạn chắc chắn muốn hủy giỏ hàng này không?')" href ="delete-cart.php?idCancel=0"> Hủy giỏ hàng </a>
-                            </button>
                             <?php
                                 if (isset($_SESSION['username']))
                                 {
                             ?>
-                                    <button><a href="delete-cart.php?id=0"> Đặt hàng </a></button>
+                                    <a class="btn btn-warning fw-bold" href="delete-cart.php?id=0"> Thanh toán </a>
                             <?php
                                 }
                                 else
                                 {
                             ?>
-                                    <button><a href="order-cart.php"> Tiến hành mua hàng </a></button>
+                                    <button><a href="#"> Tiến hành mua hàng </a></button>
                             <?php
                                 }
                             ?>
@@ -204,7 +196,7 @@
 </div><!-- /container -->
     
     <!-- footer -->
-    <?php include './footer.php'; ?>
+    <?php include 'footer.php'; ?>
     <!-- /footer -->
 
 </body>

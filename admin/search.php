@@ -7,12 +7,16 @@ if (isset($_POST['name-product'])) {
     if (mysqli_num_rows($result)) {
         while ($table = mysqli_fetch_array($result)) {
             $render .= '
-            <div class="card" style="width: 18rem; margin-bottom:20px;">
+            <div class="card" style="width: 18rem; margin-bottom:20px; padding: 0 1px;">
             <img src="' . $table['image'] . '" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">' . $table['name'] . '</h5>
-                <p class="card-text">' . $table["price"] . '</p>
-                <a href="Product-details.php?id=' . $table['id'] . '" class="btn btn-primary">View Details</a>
+                <h4 class="card-title">' . $table['name'] . '</h4>
+                <h5 class="card-title">' . $table['hotel'] . '</h5>
+                <p class="card-text text-danger fw-bold">Giá: ' . $table["price"] . ' đ</p>
+                <div class="d-flex justify-content-between">
+                    <a href="Product-details.php?id=' . $table['id'] . '" class="btn btn-primary">Chi Tiết</a>
+                    <a href="addcart.php?id=' . $table['id'] . '" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                </div>
             </div>
         </div>
             ';
@@ -28,83 +32,34 @@ if (isset($_POST['name-product'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="../css/chinhanh.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="./css/search.css">
+    <title>Bootstrap Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
 </head>
 
 <body>
-<?php include ('../admin/header.php') ?>
+<?php include ('header.php') ?>
 
-    <div class="slider">
-        <div class="contents">
-            <div class="title">
-                <h2>Tìm kiếm sản phẩm</h2>
+    <div class="container">
+            <div class="title" style="text-align: center;margin-bottom: 20px;" >
+                <h1>Tìm kiếm Phòng: <?php echo $_POST['name-product']; ?></h1>
             </div>
-            <div class="search-bar">
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Danh mục: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">india</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Thể loại: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">Tất cả</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Mức giá: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">Tất cả</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                <tr>
-                    <td class="tdLabel"><label for="register_country" class="label">Sắp Xếp: </label></td>
-                    <td>
-                        <select name="country" id="register_country" style="width:160px">
-                            <option value="india">india</option>
-                            <option value="pakistan">pakistan</option>
-                            <option value="africa">africa</option>
-                            <option value="china">china</option>
-                            <option value="other">other</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <input type="submit" value="Lọc">
-                </tr>
-                </tr>
-            </div>
-            <div class="cards" style="width: 18rem; margin-bottom:20px;">
+            <div class="row justify-content-between">
                 <?php echo $render; ?>
             </div>
-        </div>
     </div>
 
-    <?php include ('../admin/footer.php') ?>
+    <?php include ('footer.php') ?>
 </body>
 
 </html>

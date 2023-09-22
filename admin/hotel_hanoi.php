@@ -8,7 +8,7 @@ require_once '../model/connect.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Nhánh</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <link rel="stylesheet" href="../CSS/chinhanh.css">
+    <link rel="stylesheet" href="../css/chinhanh.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
@@ -16,7 +16,7 @@ require_once '../model/connect.php';
 <?php include ('header.php') ?>
 <div class="slider" style="margin: 10px 0; display: flex; justify-content: center; align-items: center;">
     <div class="content" style=" width: 1400px; background-color: #fff; text-align: center; margin: 100px 100px;">
-        <div class="container" style="display:flex; margin: 0 10px 10px 0; display: grid; grid-template-columns: repeat(4, 310px);">
+        <div class="container justify-content-between" style="display:flex; margin: 0 10px 10px 0; display: grid; grid-template-columns: repeat(3, 310px);">
         <?php
         $sql = "SELECT id,name,image, description, price, acreage FROM products WHERE category_id=2";
         $result = mysqli_query($conn, $sql);
@@ -34,9 +34,12 @@ require_once '../model/connect.php';
                              <i class="fa-solid fa-bed fa-lg" style="color: #000000; margin-top:12px; margin-right:10px;"></i>
                                 <p><?php echo $kq['description'];?></p>
                             </div>
-                             <div style="display:flex; position: absolute; bottom: 0px ;">
-                                <p>Chỉ từ <?php echo $kq['price'];?><sup>đ /đêm</sup></p>
-                                <a href="order.php?id= <?php echo $kq['id']; ?>"><button style="margin: 0 0 10px 30px; background-color: #3a6ad2; color:white; border-radius:2px">Đặt ngay</button></a>
+                            <div style="display:flex;  bottom: 0px ;">
+                                <p class="text-danger fw-bold">Chỉ từ <?php echo $kq['price'];?><sup>đ /đêm</sup></p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a href="addcart.php?id=<?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào Đơn đặt hàng</a>
+                                <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-warning">Chi tiết</a>
                             </div>
                         </div>
                     </div>

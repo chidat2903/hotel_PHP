@@ -20,12 +20,13 @@ require_once '../model/connect.php';
 
                     ?>
                         <li style="list-style: none; font-size: 20px" class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link font-monospace dropdown-toggle text-dark fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?php echo $_SESSION['username']; ?>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="edit-user.php">Thông tin cá nhân</a></li>
                                 <li><a class="dropdown-item" href="view-cart.php">Đơn đặt hàng</a></li>
+                                <li><a class="dropdown-item" href="viewed_products.php">Lịch sử xem phòng</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

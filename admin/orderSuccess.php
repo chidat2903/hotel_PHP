@@ -1,5 +1,4 @@
 <?php
-session_start();
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 require_once '../model/connect.php';
@@ -8,14 +7,21 @@ require_once '../model/connect.php';
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="../css/chinhanh.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <title>Bootstrap Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
 </head>
 <body>
     <!-- button top -->
@@ -167,7 +173,7 @@ require_once '../model/connect.php';
                                             <td colspan="6">
                                                 <h4 style="float: right; padding-right: 4px; color: #000000 ;">
                                                     Tổng tiền chưa giảm: <?php echo number_format($total); ?><sup> đ</sup> <br/><br/>
-                                                    Số tiền được giảm: - <?php echo number_format($totalAllSale); ?><sup> đ</sup> <br/><br/>
+                                                    Số tiền được giảm: <?php echo number_format($totalAllSale); ?><sup> đ</sup> <br/><br/>
                                                     Tổng tiền phải thanh toán: <?php echo number_format($totalPay) ?><sup> đ</sup>
                                                 </h4>
                                             </td>
@@ -176,13 +182,14 @@ require_once '../model/connect.php';
                                 </table>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
-                        <p style="background-color: #00ff6c;padding: 10px; border-radius: 5%; border: #00ff6c; width: 130px;">
-                            <a href="index.php" style="text-decoration: none; color: #fff"> Trở về trang chủ </a>
-                        </p>
+                        
+                            <a href="home.php" class="btn btn-warning"> Trở về trang chủ </a>
                     </div><!-- /.conatiner-fluid -->
                 </div><!-- /#page-wrapper -->
     <?php
         }
     ?>
+    
+    <?php include('footer.php')?>
 </body>
 </html>

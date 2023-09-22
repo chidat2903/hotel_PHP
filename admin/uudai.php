@@ -25,23 +25,28 @@ require_once '../model/connect.php';
 <div class="uudai container-fluid">
         <h2 class="title-home text-center fw-normal mt-3"><span class="fw-bolder me-2">ƯU ĐÃI</span>DÀNH CHO BẠN</h2>
         <div class="row justify-content-center">
-            <?php
-                    $sql = "SELECT id,img,price,title,status FROM offer";
+        <?php
+                    $sql = "SELECT * FROM products WHERE category_id=33";
                     $result = mysqli_query($conn, $sql);
 
                     while ($kq = mysqli_fetch_assoc($result)) {
                     ?>
                         <div class="card me-3" style="width: 21rem; margin-bottom:20px;">
-                            <h4><img src="<?php echo $kq['img']; ?>" class="card-img-top" alt="..."></h4>
+                            <img src="<?php echo $kq['img']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $kq['title']; ?></h5>
+                                <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text fw-bolder text-warning"><?php echo $kq['price']; ?><sup> đ</sup></p>
                                     <p class="card-text "><i class="fa-regular fa-user"></i> <?php echo $kq['status']; ?> người quan tâm</p>
                                 </div>
+                                <div class="d-flex justify-content-between">
+                                <a href="addcart.php?id=<?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào Đơn đặt hàng</a>
+                                <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-warning">Chi tiết</a>
+                                </div>
                             </div>
                         </div>
-            <?php } ?>
+
+                <?php } ?>
         </div>
     </div>
     <?php include ('footer.php') ?>

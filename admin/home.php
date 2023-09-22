@@ -1,10 +1,8 @@
 <?php
 require_once '../model/connect.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,14 +47,13 @@ require_once '../model/connect.php';
             </button>
         </div>
     </div>
-
     <div class="container-fluid">
-        <form class="row g-3 m-2 p-1 border border-light shadow rounded translate-middle-y bg-white">
+        <form class="row g-3 m-2 p-1 border border-light shadow rounded translate-middle-y bg-white" action="search.php" method="POST">
             <div class="col-md-3">
                 <label for="validationDefault01" class="form-label">Bạn muốn nghỉ dưỡng ở đâu?</label>
-                    <div class="input-group">
+                    <div class="input-group" action="search.php" method="POST">
                         <span class="input-group-text" id="validationDefault01"><i class="fa-solid fa-location-dot"></i></span>
-                        <input type="text" class="form-control" id="validationDefault01" placeholder="Nhập Khách sạn/ Điểm đến" required>
+                        <input type="text" class="form-control" name="name-product" id="validationDefault01" placeholder="Nhập Khách sạn/ Điểm đến" required>
                     </div>
             </div>
             <div class="col-md-3">
@@ -83,7 +80,7 @@ require_once '../model/connect.php';
             <div class="col-md-2">
                 <label for="validationDefault03" class="form-label"><i class="fa-solid fa-magnifying-glass"></i></label>
                 <div class="input-group">
-                <input type="submit" name="search" class="btn btn-warning" value="Tìm kiếm" />
+                    <button class="btn btn btn-warning" type="submit">  Tìm kiếm </button>
                 </div>
             </div>
        </form>
@@ -153,18 +150,21 @@ require_once '../model/connect.php';
         <h2 class="title-home text-center fw-normal"><span class="fw-bolder me-2">ƯU ĐÃI</span>DÀNH CHO BẠN</h2>
         <div class="owl-carousel owl-theme">
             <?php
-                    $sql = "SELECT id,img,price,title,status FROM offer";
+                    $sql = "SELECT * FROM products WHERE category_id=22";
                     $result = mysqli_query($conn, $sql);
-
                     while ($kq = mysqli_fetch_assoc($result)) {
                     ?>
                         <div class="item" style="width: 21rem; margin-bottom:20px;">
                             <h4><img src="<?php echo $kq['img']; ?>" class="card-img-top" alt="..."></h4>
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $kq['title']; ?></h5>
+                                <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text fw-bolder text-warning"><?php echo $kq['price']; ?><sup> đ</sup></p>
                                     <p class="card-text "><i class="fa-regular fa-user"></i> <?php echo $kq['status']; ?> người quan tâm</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                <a href="addcart.php?id=<?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào Đơn đặt hàng</a>
+                                <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-warning">Chi tiết</a>
                                 </div>
                             </div>
                         </div>
@@ -172,15 +172,15 @@ require_once '../model/connect.php';
             <?php } ?>
         </div>
         <div class="row justify-content-center m-auto" role="group" style="width:200px" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-warning"><a href="uudai.php" class="text-dark text-decoration-none">Xem thêm <i class="fa-solid fa-arrow-right"></i></a></button>
+            <button type="button" class="btn btn-outline-warning"><a href="combo.php" class="text-dark text-decoration-none">Xem thêm <i class="fa-solid fa-arrow-right"></i></a></button>
         </div>
     </div>
 
     <div class="giatot container-fluid mt-4">
         <h2 class="title-home text-center fw-normal"><span class="fw-bolder me-2">COMBO</span>GIÁ TỐT</h2>
         <div class="row justify-content-center">
-                <?php
-                    $sql = "SELECT id,img,price,title,status FROM combo";
+                    <?php
+                    $sql = "SELECT * FROM products WHERE category_id=33";
                     $result = mysqli_query($conn, $sql);
 
                     while ($kq = mysqli_fetch_assoc($result)) {
@@ -188,10 +188,14 @@ require_once '../model/connect.php';
                         <div class="card me-3" style="width: 21rem; margin-bottom:20px;">
                             <img src="<?php echo $kq['img']; ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo $kq['title']; ?></h5>
+                                <h5 class="card-title"><?php echo $kq['name']; ?></h5>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text fw-bolder text-warning"><?php echo $kq['price']; ?><sup> đ</sup></p>
                                     <p class="card-text "><i class="fa-regular fa-user"></i> <?php echo $kq['status']; ?> người quan tâm</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                <a href="addcart.php?id=<?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào Đơn đặt hàng</a>
+                                <a href="Product-details.php?id= <?php echo $kq['id']; ?>" class="btn btn-warning">Chi tiết</a>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +203,7 @@ require_once '../model/connect.php';
                 <?php } ?>
         </div>
         <div class="row justify-content-center m-auto" role="group" style="width:200px" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-warning"><a href="combo.php" class="text-dark text-decoration-none">Xem thêm <i class="fa-solid fa-arrow-right"></i></a></button>
+            <button type="button" class="btn btn-outline-warning"><a href="uudai.php" class="text-dark text-decoration-none">Xem thêm <i class="fa-solid fa-arrow-right"></i></a></button>
         </div>
     </div>
     

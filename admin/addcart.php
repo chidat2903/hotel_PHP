@@ -16,4 +16,3 @@
     $sl = $_SESSION['cart'];
     header('location:./home.php');
 ?>
-

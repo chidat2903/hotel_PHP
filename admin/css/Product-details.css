@@ -44,7 +44,7 @@
     height: 38px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.50);
-    background: #0C50FF;
+    background: #ffdb0c;
     margin-right: 10px ;
     color: #fff;
 }
@@ -62,7 +62,7 @@
 .pay button {
     width: 221px;
     border-radius: 20px;
-    background-color: #0C50FF;
+    background-color: #ffdb0c;
     color: #fff;
     height: 54px;
     

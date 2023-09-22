@@ -105,47 +105,9 @@
                 }
             }
 
-            // Gọi thư viện gửi email:
-            include('class.smtp.php');
-            include "class.phpmailer.php"; 
-            $nFrom = "Mylishop's Shop";    //mail duoc gui tu dau, thuong de ten cong ty ban
-            $mFrom = 'my.hoih@student.passerellesnumeriques.org';  //dia chi email cua ban 
-            $mPass = 'hoihmy039745020027121998';       //mat khau email cua ban
-            $nTo = $name; //Ten nguoi nhan
-            $mTo = $email;   //dia chi nhan mail
-
-            $title = 'THÔNG TIN MUA HÀNG TỪ MYLISHOP';   //Tieu de gui mail
-            $body = 'NỘI DUNG ĐƠN HÀNG:' . "<br/>"."<br/>".
-            $body .= "Tên khách hàng: " . $name . "\n";
-            $body .= "Số điện thoại: " . $phone . "\n";
-            $body .= "Địa chỉ: " . $address . "\n";
-            $body .= "Thông tin sản phẩm: " . $infor;
-            $body .= "Tổng số tiền: " . $total;
-            $body .= "\n\n\n Cảm ơn quý khách đã tin tưởng dùng sản phẩm của chúng tôi! Hy vọng quý khách có thể ghé qua của hàng nhiều hơn, sẽ có nhiều ưu đãi cho khách hàng là thành viên của shop ạ.";
+            include ('email.php');
             
-            $mail->IsSMTP();
-            $mail->CharSet  = "utf-8";
-            $mail->SMTPDebug  = 0;   // enables SMTP debug information (for testing)
-            $mail->SMTPAuth   = true;    // enable SMTP authentication
-            $mail->SMTPSecure = "ssl";   // sets the prefix to the servier
-            $mail->Host       = "smtp.gmail.com";    // sever gui mail.
-            $mail->Port       = 465;       // cong gui mail de nguyen
-
-            // xong phan cau hinh bat dau phan gui mail
-            $mail->Username   = $mFrom;  // khai bao dia chi email
-            $mail->Password   = $mPass;              // khai bao mat khau
-            $mail->SetFrom($mFrom, $nFrom);
-            $mail->AddReplyTo('my.hoih@student.passerellesnumeriques.org', 'Hôih My'); //khi nguoi dung phan hoi se duoc gui den email nay
-            $mail->Subject    = $title;// tieu de email 
-            $mail->MsgHTML($body);// noi dung chinh cua mail se nam o day.
-            $mail->AddAddress($mTo, $nTo);
-            
-            // thuc thi lenh gui mail 
-            if(!$mail->Send()) {
-                echo "<script type=\"text/javascript\">alert(\"Gửi email lỗi! Vui lòng kiểm tra lại.\");</script>";
-            } else {
-                echo "<script type=\"text/javascript\">alert(\"Email của bạn đã được gửi đi hãy kiếm tra hộp thư đến để xem kết quả! Cảm ơn.\");</script>";
-            }
+        
 
 
             // Xóa hết cart:
@@ -160,7 +122,7 @@
             </script>
 <?php
         }
-        // Nếu có id sản phẩm được chọn thì xóa theo id của nó
+        // Nếu có id phòng được chọn thì xóa theo id của nó
         else
         {
             unset($_SESSION["cart"][$id]);

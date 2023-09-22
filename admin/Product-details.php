@@ -30,58 +30,24 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="../css/chinhanh.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="./css/Product-details.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="./css/Product-details.css">
+    <title>Bootstrap Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
 </head>
+
 <body>
-        <header>
-            <div class="header-top"></div>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid" style="height: 90px;">
-                    <a class="navbar-brand" href="#">
-                        <img src="./images/logo/black-green-futuristic-game-logo-1.png" width="100" height="90" alt="">
-                    </a>
-                    <div class="container-fluid d-flex">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" style="margin-left: 30px;width: 300px;" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-
-                    </div>
-                    <div class="login container-fluid " style="margin-left: 300px;">
-                        <i class="fa-solid fa-user"></i>
-                        <a href="">Đăng Nhập</a>
-                        <span>/</span>
-                        <a href="">Đăng ký</a>
-                    </div>
-
-                    <button class="cart container-fluid " style="border-radius: 10px; width: 450px; height: 60px; margin-right: 20px;">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span>Giỏ Hàng</span>
-                    </button>
-                </div>
-            </nav>
-            <nav class="nav navbar  navbar-light" style="background-color: #625D5D; padding: 0;">
-                <ul class="nav" style="margin-left: 40px;">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="#" >Disabled</a>
-                    </li>
-                  </ul>
-              </nav>
-        </header>
+    <?php include ('header.php') ?>
 
         <div class="containers">
             <div class="content">
@@ -91,35 +57,19 @@ if (isset($_GET['id'])) {
                 <div class="item-right">
                     <h1><?php echo htmlspecialchars($product['name']); ?></h1>
                     <div class="item-text">
-                        <p>Trạng thái: còn hàng</p>
-                        <p>Thể loại:...</p>
-                        <p>Giá: <?php echo htmlspecialchars($product['price']); ?> đ</p>
-                        <h4>Chọn gói sản phẩm</h4>
-                        <div class="package">
-                            <div>
-                                <button>TK Thường</button>
-                            </div>
-                            <div>
-                                <button>TK Pro</button>
-                            </div>
-                        </div>
+                        <h4>Tại: <?php echo htmlspecialchars($product['hotel']); ?> </h4>
+                        <p>Trạng thái: Còn phòng</p>
+                        <p class="text-danger">Giá: <?php echo htmlspecialchars($product['price']); ?> đ</p>
+                        <p>Số giường: <?php echo htmlspecialchars($product['description']); ?> </p>
 
-                        <div class="pay">
-                            <div class="buy">
-                                <button>
-                                    <i class="fa-solid fa-credit-card"></i> Mua ngay
-                                </button>
-                            </div>
-                            
-                            <div class="add-cart">
-                                <button>
-                                    <i class="fa-solid fa-cart-shopping"></i> Thêm vào Giỏ Hàng
-                                </button>
-                            </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="addcart.php?id=<?php echo $kq['id']; ?>" class="btn btn-primary">Thêm vào Đơn đặt hàng</a>
+                            <a href="view-cart?id= <?php echo $kq['id']; ?>" class="btn btn-warning">Mua ngay</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    <?php include ('footer.php') ?>
 </body>
 </html>

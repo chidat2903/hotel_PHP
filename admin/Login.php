@@ -12,11 +12,11 @@ else {
 }
 
 if (isset($_GET['rs'])) {
-    echo "<script type=\"text/javascript\">alert(\"Bạn đã đăng ký thành công!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Bạn đã đăng ký thất bại!\");</script>";
     echo "<script type=\"text/javascript\">alert(\"Vui lòng đăng nhập để mua hàng!\");</script>";
 }
 if (isset($_GET['rf'])) {
-    echo "<script type=\"text/javascript\">alert(\"Đăng ký thất bại!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Đăng ký thành công!\");</script>";
 }
 ?>
 
